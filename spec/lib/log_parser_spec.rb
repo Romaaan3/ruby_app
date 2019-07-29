@@ -1,4 +1,5 @@
 require_relative '../spec_helper'
+require_relative '../../lib/log_parser'
 
 RSpec.describe LogParser do
   let(:path_to_file) { 'spec/fixtures/webserver.log' }
@@ -22,6 +23,22 @@ RSpec.describe LogParser do
 
     it 'returns valid data' do
       expect(subject.log_lines).to eq(expected_result)
+    end
+
+    context 'file missing' do
+      let(:path_to_file) { 'spec/fixtures/no_file.log' }
+
+      it 'raises error' do
+        expect { subject.log_lines }.to raise_error(FileMissingError, 'Cannot find file.')
+      end
+    end
+
+    context 'invalid file format' do
+      let(:path_to_file) { 'spec/fixtures/invalid_format.log' }
+
+      it 'raises error' do
+        expect { subject.log_lines }.to raise_error(InvalidFileFormatError, 'Invalid file format.')
+      end
     end
   end
 end
