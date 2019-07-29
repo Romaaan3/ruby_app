@@ -19,7 +19,7 @@ RSpec.describe Reporter do
        { views_count: 5, uniq_views_count: 1, path: '/about' }]
     end
 
-    xit 'returns correct data' do
+    it 'returns correct data' do
       expect(subject.counted_views).to eq(expected_results)
     end
   end
@@ -34,7 +34,7 @@ RSpec.describe Reporter do
        { views_count: 1, uniq_views_count: 1, path: '/about/2' }]
     end
 
-    xit 'sorts by views count' do
+    it 'sorts by views count' do
       expect(subject.most_views).to eq(expected_results)
     end
   end
@@ -49,7 +49,7 @@ RSpec.describe Reporter do
        { views_count: 1, uniq_views_count: 1, path: '/about/2' }]
     end
 
-    xit 'sorts by uniq views count' do
+    it 'sorts by uniq views count' do
       expect(subject.most_unique_views).to eq(expected_results)
     end
   end
