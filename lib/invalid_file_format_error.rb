@@ -1,0 +1,1 @@
+class InvalidFileFormatError < StandardError; end

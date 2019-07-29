@@ -1,3 +1,6 @@
+require_relative 'file_missing_error'
+require_relative 'invalid_file_format_error'
+
 class LogParser
   attr_reader :path_to_file
 
@@ -16,11 +19,16 @@ class LogParser
   end
 
   def file_lines
+    raise FileMissingError, 'Cannot find file.' unless File.file?(path_to_file)
+
     File.read(path_to_file).lines
   end
 
   def parse_line(line)
     path, ip = line.strip.split(' ')
+
+    raise InvalidFileFormatError, 'Invalid file format.' if path.nil? || ip.nil?
+
     { path: path, ip: ip }
   end
 end

@@ -28,15 +28,15 @@ RSpec.describe LogParser do
     context 'file missing' do
       let(:path_to_file) { 'spec/fixtures/no_file.log' }
 
-      it 'raises error' do
+      it 'raises file not found error' do
         expect { subject.log_lines }.to raise_error(FileMissingError, 'Cannot find file.')
       end
     end
 
     context 'invalid file format' do
-      let(:path_to_file) { 'spec/fixtures/invalid_format.log' }
+      let(:path_to_file) { 'spec/fixtures/invalid_webserver.log' }
 
-      it 'raises error' do
+      it 'raises invalid file format error' do
         expect { subject.log_lines }.to raise_error(InvalidFileFormatError, 'Invalid file format.')
       end
     end
