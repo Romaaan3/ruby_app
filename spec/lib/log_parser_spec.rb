@@ -9,16 +9,23 @@ RSpec.describe LogParser do
 
   describe '#log_lines' do
     let(:expected_result) do
-      [{ path: '/help_page/1', ip: '126.318.035.038' },
-       { path: '/contact', ip: '184.123.665.067' },
+      [{ path: '/contact', ip: '184.123.665.067' },
        { path: '/home', ip: '184.123.665.067' },
        { path: '/about/2', ip: '444.701.448.104' },
        { path: '/help_page/1', ip: '929.398.951.889' },
        { path: '/index', ip: '444.701.448.104' },
        { path: '/help_page/1', ip: '722.247.931.582' },
        { path: '/about', ip: '061.945.150.735' },
+       { path: '/about', ip: '061.945.150.735' },
+       { path: '/about', ip: '061.945.150.735' },
+       { path: '/about', ip: '061.945.150.735' },
+       { path: '/about', ip: '061.945.150.735' },
        { path: '/help_page/1', ip: '646.865.545.408' },
-       { path: '/home', ip: '235.313.352.950' }]
+       { path: '/home', ip: '235.313.352.950' },
+       { path: '/help_page/1', ip: '929.398.951.889' },
+       { path: '/contact', ip: '184.123.665.068' },
+       { path: '/contact', ip: '184.123.665.069' },
+       { path: '/contact', ip: '184.123.665.070' }]
     end
 
     it 'returns valid data' do
